@@ -33,6 +33,8 @@ create table produto(
 use loja;
 create table pedido(
 	id_pedido int primary key auto_increment,
+	cliente_id int,
+	vendedor_id int,
     constraint pedido_cliente foreign key(cliente_id) references cliente(id_cliente),
     constraint pedido_vendedor foreign key(vendedor_id) references vendedor(id_vendedor),
     prazoEntrega int
@@ -40,6 +42,8 @@ create table pedido(
 
 use loja;
 create table itempedido(
+	pedido_id int,
+	produto_id int,
 	constraint pedido_produto foreign key(pedido_id) references pedido(id_pedido),
     constraint produto_pedido foreign key(produto_id) references produto(id_produto),
     quantidade int
